@@ -1,0 +1,18 @@
+-- Todo App Database Schema
+-- Database: todo_dev
+
+CREATE DATABASE IF NOT EXISTS todo_dev;
+
+USE todo_dev;
+
+-- Todo table
+CREATE TABLE IF NOT EXISTS todos (
+    id INT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    completed TINYINT(1) NOT NULL DEFAULT 0,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_0900_ai_ci;

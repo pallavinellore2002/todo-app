@@ -414,4 +414,25 @@ def test_create_todo_with_whitespace_only_title():
         }
     )
 
-    assert response.status_code == 422              
+    assert response.status_code == 422 
+    
+def test_update_todo_with_invalid_completed_type():
+    create_response = client.post(
+        "/api/todos",
+        json={
+            "title": "Invalid Completed Test"
+        }
+    )
+
+    assert create_response.status_code == 200
+
+    todo_id = create_response.json()["id"]
+
+    update_response = client.put(
+        f"/api/todos/{todo_id}",
+        json={
+            "completed": "yes"
+        }
+    )
+
+    assert update_response.status_code == 422  

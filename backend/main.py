@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, StrictBool
 from backend.database import get_connection
 app = FastAPI()
 
@@ -24,7 +24,7 @@ class TodoCreate(BaseModel):
 
 class TodoUpdate(BaseModel):
     title: str | None = None
-    completed: bool | None = None
+    completed: StrictBool | None = None
 
 @app.get("/")
 def home():
